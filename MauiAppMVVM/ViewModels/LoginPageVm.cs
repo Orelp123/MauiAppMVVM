@@ -1,0 +1,111 @@
+﻿using MauiAppMVVM.Services;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Input;
+
+namespace MauiAppMVVM.ViewModels
+{
+    public class LoginPageVm : VmBase
+    {
+        IDataService db;
+
+        private string name;
+        private string password;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (name != value)
+                {
+                    name = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                if (password != value)
+                {
+                    password = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private bool messangevisible;
+
+        public bool MessagesVisible
+        {
+            get { return messangevisible; }
+            set
+            {
+                if (messangevisible != value)
+                {
+                    messangevisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private string messageError;
+
+        public string MessageError
+        {
+            get { return messageError; }
+            set
+            {
+                if (messageError != value)
+                {
+                    messageError = value;
+                    OnPropertyChanged();
+                }
+            }
+
+        }
+
+        private Color messagesColor;
+
+        public Color MessagesColor
+        {
+            get { return messagesColor; }
+            set
+            {
+                if (messagesColor != value)
+                {
+                    messagesColor = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public ICommand LoginCommand
+        {
+            get;
+        }
+        public LoginPageVm(IDataService data)
+        {
+            db = data;
+            LoginCommand = new Command(Login);
+        }
+        private void Login()
+        {
+            MessagesVisible = true;
+            if (db.IsRegister(Name, Password))
+            {
+                MessageError = "you are in";
+                MessagesColor = Colors.Green;
+            }
+            else
+            {
+                MessageError = "Login Failed";
+                MessagesColor = Colors.Red;
+            }
+        }
+    }
+}

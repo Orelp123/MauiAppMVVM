@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiAppMVVM.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiAppMVVM"
+    xmlns:views="clr-namespace:MauiAppMVVM.Views"
+    Title="MauiAppMVVM">
+
+    <Shell.FlyoutHeader>
+        <StackLayout 
+            BackgroundColor="Blue"
+            Padding="20"
+            VerticalOptions="Center" >
+            <Label FontAttributes="Bold" FontSize="Header" Text="Welcome" />
+        </StackLayout>
+    </Shell.FlyoutHeader>
+    
+    <Shell.FlyoutFooter>
+        <StackLayout 
+            BackgroundColor="LightCyan"
+            Padding="20"
+            VerticalOptions="Center">
+            <Label FontAttributes ="Bold" FontSize="Subtitle" Text="Menu"/>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+    <ShellContent
+     Title="Home"
+     ContentTemplate="{DataTemplate views:UserList}"
+     Route="MainPage" />    
+
+    <FlyoutItem Title="Login" Icon="splash.png">
+
+        <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="MainPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Register" Icon="appicon.png" >
+        <ShellContent
+            Title="Register"
+            ContentTemplate="{DataTemplate views:RegisterPage}"
+            Route="MainPage"
+            ></ShellContent>
+    </FlyoutItem>
+
+
+</Shell>
