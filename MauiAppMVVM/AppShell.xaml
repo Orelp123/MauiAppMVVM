@@ -27,20 +27,20 @@
     <ShellContent
      Title="Home"
      ContentTemplate="{DataTemplate views:UserList}"
-     Route="MainPage" />    
+     Route="UserListPage" />    
 
     <FlyoutItem Title="Login" Icon="splash.png">
 
         <ShellContent
         Title="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="MainPage" />
+        Route="LoginPage" />
     </FlyoutItem>
     <FlyoutItem Title="Register" Icon="appicon.png" >
         <ShellContent
             Title="Register"
             ContentTemplate="{DataTemplate views:RegisterPage}"
-            Route="MainPage"
+            Route="RegisterPage"
             ></ShellContent>
     </FlyoutItem>
 

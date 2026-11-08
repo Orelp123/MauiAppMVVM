@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppMVVM.Views.UserDataPage"
              xmlns:vm="clr-namespace:MauiAppMVVM.ViewModels"
-             xmlns:views ="clr-namespace:MauiAppMVVM.Models"
-             x:DataType="vm:UserDataPageVM"
+             xmlns:views ="clr-namespace:MauiAppMVVM.Views"
+                          x:DataType="vm:UserDataPageVM"
+             xmlns:models="clr-namespace:MauiAppMVVM.Models"
              Title="UserDataPage">
     <VerticalStackLayout>
         <Label 
@@ -21,11 +22,11 @@
             HorizontalOptions="Center" />
 
         <Label 
-     Text="{Binding User.Password}"
-     TextColor="Green" 
-     FontSize="Medium" 
-     VerticalOptions="Center"   
-     HorizontalOptions="Center"/>
+             Text="{Binding User.Password}"
+             TextColor="Green" 
+             FontSize="Medium" 
+             VerticalOptions="Center"   
+             HorizontalOptions="Center"/>   
     </VerticalStackLayout>
     
 </ContentPage>

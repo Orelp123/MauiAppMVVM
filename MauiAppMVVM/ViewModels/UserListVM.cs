@@ -26,19 +26,23 @@ namespace MauiAppMVVM.ViewModels
             {
                 user = value;
                 OnPropertyChanged();
-              //  ShowUserData();
+                //ShowUserData();
             }
         }
         public ICommand ShowUserDataCommand
         {
             get;
         }
+        //public ICommand ShowListCommand
+        //{
+        //    get;
+        //}
         //public ICommand Delete
 
-        private void ShowUserData()
-        {
-            DisplayUser = User.Name + " - " + User.Password;
-        }
+        //private void ShowUserData()
+        //{
+        //    DisplayUser = User.Name + " - " + User.Password;
+        //}
         public ObservableCollection<User> Users
         {
             get; set;
@@ -80,13 +84,10 @@ namespace MauiAppMVVM.ViewModels
             }
 
         }
-        private async Task ShowUser(User p)
-        {
-            Dictionary<string, object> data2 = new Dictionary<string, object>();
-            data2.Add("user", p);
-            await Shell.Current.GoToAsync("UserData", data2);
-           // displayUser = p.Name + " - " + p.Password;
-        }
+       
+
+        
+
         public UserListVM(IDataService db)
         {
             
@@ -95,6 +96,16 @@ namespace MauiAppMVVM.ViewModels
             Users = new ObservableCollection<User>(userslist);
             User = userslist[1];
             ShowUserDataCommand = new Command<User>(async p => ShowUser(p));
+            
+            
+        }
+        private async Task ShowUser(User p)
+        {
+            Dictionary<string, object> data2 = new Dictionary<string, object>();
+            data2.Add("user", p);
+            await Shell.Current.GoToAsync("UserData", data2);
+            // displayUser = p.Name + " - " + p.Password;
+
         }
     }
 }
