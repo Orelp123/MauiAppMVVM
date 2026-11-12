@@ -1,7 +1,4 @@
 ﻿using MauiAppMVVM.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace MauiAppMVVM.ViewModels
@@ -9,7 +6,7 @@ namespace MauiAppMVVM.ViewModels
     public class LoginPageVm : VmBase
     {
         IDataService db;
-
+        private Task loadUserName;
         private string name;
         private string password;
 
@@ -91,21 +88,39 @@ namespace MauiAppMVVM.ViewModels
         public LoginPageVm(IDataService data)
         {
             db = data;
-            LoginCommand = new Command(Login);
+            LoginCommand = new Command(async () => await Login());
+            loadUserName = LoadUserasync();
+
+
+
+
         }
-        private void Login()
+        private async Task? LoadUserasync()
+        {
+            Name = await SecureStorage.Default.GetAsync("userName");
+            Password = await SecureStorage.Default.GetAsync("password");
+        }
+     
+
+        private async Task Login()
         {
             MessagesVisible = true;
-            if (db.IsRegister(Name, Password))
+           await Task.Delay(1000);
+            if (db.IsRegister(Name, Password) == true)
             {
+
+                await SecureStorage.Default.SetAsync("userName", Name);
+                await SecureStorage.Default.SetAsync("password", Password);
                 MessageError = "you are in";
                 MessagesColor = Colors.Green;
+                
             }
             else
             {
-                MessageError = "Login Failed";
+                MessageError = "login fail";
                 MessagesColor = Colors.Red;
             }
+           
         }
     }
 }

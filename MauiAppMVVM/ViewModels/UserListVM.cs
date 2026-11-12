@@ -1,9 +1,6 @@
 ﻿using MauiAppMVVM.Models;
 using MauiAppMVVM.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace MauiAppMVVM.ViewModels

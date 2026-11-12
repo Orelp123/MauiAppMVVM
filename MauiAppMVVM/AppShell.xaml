@@ -26,15 +26,17 @@
     </Shell.FlyoutFooter>
     <ShellContent
      Title="Home"
-     ContentTemplate="{DataTemplate views:UserList}"
-     Route="UserListPage" />    
+ ContentTemplate="{DataTemplate views:UserList}"
+ Route="UserListPage" />
+     
 
     <FlyoutItem Title="Login" Icon="splash.png">
-
         <ShellContent
+ 
         Title="Login"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" />
+ContentTemplate="{DataTemplate views:LoginPage}"
+Route="LoginPage" />
+
     </FlyoutItem>
     <FlyoutItem Title="Register" Icon="appicon.png" >
         <ShellContent

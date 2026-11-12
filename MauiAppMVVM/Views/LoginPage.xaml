@@ -7,6 +7,7 @@
              xmlns:vm="clr-namespace:MauiAppMVVM.ViewModels"
              x:DataType="vm:LoginPageVm"
              Title="LoginPage">
+    
     <VerticalStackLayout>
         <Label 
             Text="Login Page"
@@ -39,10 +40,12 @@
 
         </Border>
         
-        <Button WidthRequest=" 100"
-                HeightRequest=" 50"
+        
+        <Button 
+                Style="{StaticResource buttonStyle}"
                 Command="{Binding LoginCommand}"
-                Text=" send"/>
+            Text="Login"
+                />
 
         <Label 
             FontSize="Large"

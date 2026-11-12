@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MauiAppMVVM.Models
+﻿namespace MauiAppMVVM.Models
 {
     public class User
     {
