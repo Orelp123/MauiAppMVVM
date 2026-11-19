@@ -9,46 +9,53 @@
              Title="RegisterPage">
     <VerticalStackLayout>
         <Label
-Text="Add user page"
-FontSize="Large"
-VerticalOptions="Center"
-HorizontalOptions="Center" />
+        Text="Add user page"
+        FontSize="Large"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" />   
 
         <Border MaximumHeightRequest=" 100"
-MaximumWidthRequest=" 200"
-StrokeThickness=" 2">
+            MaximumWidthRequest=" 200"
+            StrokeThickness=" 2">
 
-            <Entry
-Placeholder=" Name"
-x:Name=" nameEntry"
-Text="{Binding Name}"
-VerticalOptions="Center"
-HorizontalOptions="Center" />
-        </Border>
+                        <Entry
+            Placeholder=" Name"
+            x:Name=" nameEntry"
+            Text="{Binding Name}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+                    </Border>
 
-        <Border MaximumHeightRequest=" 100"
-MaximumWidthRequest=" 200"
-StrokeThickness=" 2">
+                    <Border MaximumHeightRequest=" 100"
+            MaximumWidthRequest=" 200"
+            StrokeThickness=" 2">
 
-            <Entry
-Placeholder=" Password"
-x:Name=" passwordEntry"
-Text="{Binding Password}"
-VerticalOptions="Center"
-HorizontalOptions="Center" />
-        </Border>
+       <Entry
+            Placeholder=" Password"
+            x:Name=" passwordEntry"
+            Text="{Binding Password}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+             </Border>
+       <Button WidthRequest=" 100"
+            HeightRequest=" 50"
+            Command="{Binding RegisterCommand}"
+            Text=" send"/>
+
+       <Label
+            FontSize="Large"
+            TextColor="{Binding MessageColor}"
+            IsVisible ="{Binding MessageVisible}"
+            Text="{Binding MessageError} "
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        
         <Button WidthRequest=" 100"
-HeightRequest=" 50"
-Command="{Binding RegisterCommand}"
-Text=" send"/>
-
-        <Label
-FontSize="Large"
-TextColor="{Binding MessageColor}"
-IsVisible ="{Binding MessageVisible}"
-Text="{Binding MessageError} "
-VerticalOptions="Center"
-HorizontalOptions="Center" />
-
+            HeightRequest=" 50"
+            Command="{Binding SaveImageCommend}"
+            Text=" Take"/>
+        <Image Source="{Binding ImageS}"
+               WidthRequest="100"
+               HeightRequest="100" />
     </VerticalStackLayout>
 </ContentPage>

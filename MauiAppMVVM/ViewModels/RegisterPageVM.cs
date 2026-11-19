@@ -72,6 +72,7 @@ namespace MauiAppMVVM.ViewModels
             }
         }
 
+
         public ICommand RegisterCommand
         {
             get;

@@ -1,4 +1,5 @@
-﻿using MauiAppMVVM.Services;
+﻿
+using MauiAppMVVM.Services;
 using System.Windows.Input;
 
 namespace MauiAppMVVM.ViewModels
@@ -7,6 +8,9 @@ namespace MauiAppMVVM.ViewModels
     {
         IDataService db;
         private Task loadUserName;
+
+        private bool isInternet;
+
         private string name;
         private string password;
 
@@ -106,20 +110,42 @@ namespace MauiAppMVVM.ViewModels
         {
             MessagesVisible = true;
            await Task.Delay(1000);
-            if (db.IsRegister(Name, Password) == true)
+            isInternet = false;
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
             {
+                isInternet = true;
+                if (db.IsRegister(Name, Password) == true)
+                {
 
-                await SecureStorage.Default.SetAsync("userName", Name);
-                await SecureStorage.Default.SetAsync("password", Password);
-                MessageError = "you are in";
-                MessagesColor = Colors.Green;
-                
+                    await SecureStorage.Default.SetAsync("userName", Name);
+                    await SecureStorage.Default.SetAsync("password", Password);
+                    MessageError = "you are in";
+                    MessagesColor = Colors.Green;
+                    bool supportsUri = await Launcher.Default.CanOpenAsync("google.navigation:");
+
+                    if (supportsUri)
+                    {
+
+                        string destination = Uri.EscapeDataString("דרך מנחם בגין 132, תל אביב");
+                        await Launcher.Default.OpenAsync($"google.navigation:q={destination}");
+                    }
+                   
+
+                }
+                else
+                {
+                    MessageError = "login fail";
+                    MessagesColor = Colors.Red;
+                }
+
             }
             else
             {
-                MessageError = "login fail";
+                isInternet = false;
+                MessageError = "No Internet";
                 MessagesColor = Colors.Red;
             }
+           
            
         }
     }
